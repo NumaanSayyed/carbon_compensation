@@ -1,10 +1,10 @@
-// import trailGuide from "../config";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import earth from '../assets/earth.png'
 export default function Header() {
   const [navbar, setNavbar] = useState(false);
-  const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
   const items = [
     {
@@ -14,7 +14,8 @@ export default function Header() {
     {
       name: "Program",
       route: "/programs"
-    },
+    }
+   
   ];
 
   return (
@@ -22,9 +23,12 @@ export default function Header() {
       <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
-            <a className="flex items-center">
-              <span className="self-center text-2xl font-bold whitespace-nowrap dark:text-black">{user?.name}</span>
-            </a>
+            <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+              <img src={earth} className="h-16" alt="Flowbite Logo" />
+              {/* <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">process.env.pname</span> */}
+              
+            </Link>
+           
             <div className="md:hidden relative">
               <button
                 className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
