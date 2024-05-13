@@ -1,0 +1,114 @@
+// import trailGuide from "../config";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+import earth from '../assets/earth.png'
+export default function Header() {
+  const [navbar, setNavbar] = useState(false);
+  const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
+
+  const items = [
+    {
+      name: "Home",
+      route: "/"
+    },
+    {
+      name: "Program",
+      route: "/programs"
+    },
+  ];
+
+  return (
+    <nav className="w-full  shadow">
+      <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
+        <div>
+          <div className="flex items-center justify-between py-3 md:py-5 md:block">
+           <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+  <img src={earth} className="h-20" alt="Flowbite Logo" />
+  {/* <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span> */}
+</Link>
+
+            <div className="md:hidden relative">
+              <button
+                className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
+                onClick={() => setNavbar(!navbar)}
+              >
+                {navbar ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-6 h-6 text-black"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-6 h-6 text-black"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  </svg>
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div
+            className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? "block" : "hidden"
+              }`}
+          >
+            <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
+              {items.map((data, index) => (
+                <li className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 dark:text-color1 md:dark:hover:text-blue-900 dark:hover:bg-gray-700  md:dark:hover:bg-transparent font-bold transition hover:-translate-y-1 hover:scale-110" aria-current="page" key={index}>
+                  <Link to={data.route}>{data.name}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="hidden space-x-2 md:inline-block">
+          {isAuthenticated ? (
+            <button
+              onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
+              className="hover:bg-gradient-to-br focus:ring-4 focus:outline-none shadow-lg  shadow-red-500/50 dark:shadow-lg bg-gradient-to-r from-green-500 to-green-300 cursor-pointer font-medium rounded-lg text-sm px-5 py-2.5  text-black text-center mr-2 mb-2"
+            >
+              Log Out
+            </button>
+          ) : (
+            <button
+              onClick={() => loginWithRedirect()}
+              className="hover:bg-gradient-to-br focus:ring-4 focus:outline-none shadow-lg  shadow-red-500/50 dark:shadow-lg bg-gradient-to-r from-green-500 to-green-300 cursor-pointer font-medium rounded-lg text-sm px-5 py-2.5  text-black text-center mr-2 mb-2"
+            >
+              Log In
+            </button>
+          )}
+        </div>
+
+        {navbar && isAuthenticated && (
+          <div className="md:hidden">
+            <img className="absolute mb-3  w-10 h-10 p-1 rounded-full  " src={user?.picture} alt="Bordered avatar" />
+          </div>
+        )
+        }
+      </div>
+    </nav>
+  );
+}
+
+
