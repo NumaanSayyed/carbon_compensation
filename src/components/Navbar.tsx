@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import earth from '../assets/earth.png'
 export default function Header() {
   const [navbar, setNavbar] = useState(false);
   const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
@@ -23,11 +22,9 @@ export default function Header() {
       <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
-           <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-  <img src={earth} className="h-20" alt="Flowbite Logo" />
-  {/* <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span> */}
-</Link>
-
+            <a className="flex items-center">
+              <span className="self-center text-2xl font-bold whitespace-nowrap dark:text-black">{user?.name}</span>
+            </a>
             <div className="md:hidden relative">
               <button
                 className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
@@ -73,8 +70,8 @@ export default function Header() {
               }`}
           >
             <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
-              {items.map((data, index) => (
-                <li className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 dark:text-color1 md:dark:hover:text-blue-900 dark:hover:bg-gray-700  md:dark:hover:bg-transparent font-bold transition hover:-translate-y-1 hover:scale-110" aria-current="page" key={index}>
+              {items.map((data) => (
+                <li className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 dark:text-color1 md:dark:hover:text-blue-900 dark:hover:bg-gray-700  md:dark:hover:bg-transparent font-bold transition hover:-translate-y-1 hover:scale-110" aria-current="page" key={data.route}>
                   <Link to={data.route}>{data.name}</Link>
                 </li>
               ))}
@@ -82,6 +79,26 @@ export default function Header() {
           </div>
         </div>
 
+        {/* Conditionally render the login/logout button based on screen size */}
+        <div className={`md:hidden ${navbar ? "block" : "hidden"}`}>
+          {isAuthenticated ? (
+            <button
+              onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
+              className="hover:bg-gradient-to-br focus:ring-4 focus:outline-none shadow-lg  shadow-red-500/50 dark:shadow-lg bg-gradient-to-r from-green-500 to-green-300 cursor-pointer font-medium rounded-lg text-sm px-5 py-2.5  text-black text-center mr-2 mb-2"
+            >
+              Log Out
+            </button>
+          ) : (
+            <button
+              onClick={() => loginWithRedirect()}
+              className="hover:bg-gradient-to-br focus:ring-4 focus:outline-none shadow-lg  shadow-red-500/50 dark:shadow-lg bg-gradient-to-r from-green-500 to-green-300 cursor-pointer font-medium rounded-lg text-sm px-5 py-2.5  text-black text-center mr-2 mb-2"
+            >
+              Log In
+            </button>
+          )}
+        </div>
+
+        {/* Render profile picture for larger screens */}
         <div className="hidden space-x-2 md:inline-block">
           {isAuthenticated ? (
             <button
@@ -100,12 +117,6 @@ export default function Header() {
           )}
         </div>
 
-        {navbar && isAuthenticated && (
-          <div className="md:hidden">
-            <img className="absolute mb-3  w-10 h-10 p-1 rounded-full  " src={user?.picture} alt="Bordered avatar" />
-          </div>
-        )
-        }
       </div>
     </nav>
   );
