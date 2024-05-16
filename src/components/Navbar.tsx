@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
+// import { useAuth0 } from "@auth0/auth0-react";
 import earth from '../assets/earth.png'
 export default function Header() {
   const [navbar, setNavbar] = useState(false);
-  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  // const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
   const items = [
     {
@@ -85,16 +85,16 @@ export default function Header() {
 
         {/* Conditionally render the login/logout button based on screen size */}
         <div className={`md:hidden ${navbar ? "block" : "hidden"}`}>
-          {isAuthenticated ? (
+          {navbar ? (
             <button
-              onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
+             
               className="hover:bg-gradient-to-br focus:ring-4 focus:outline-none shadow-lg  shadow-red-500/50 dark:shadow-lg bg-gradient-to-r from-green-500 to-green-300 cursor-pointer font-medium rounded-lg text-sm px-5 py-2.5  text-black text-center mr-2 mb-2"
             >
               Log Out
             </button>
           ) : (
             <button
-              onClick={() => loginWithRedirect()}
+              
               className="hover:bg-gradient-to-br focus:ring-4 focus:outline-none shadow-lg  shadow-red-500/50 dark:shadow-lg bg-gradient-to-r from-green-500 to-green-300 cursor-pointer font-medium rounded-lg text-sm px-5 py-2.5  text-black text-center mr-2 mb-2"
             >
               Log In
@@ -104,20 +104,20 @@ export default function Header() {
 
         {/* Render profile picture for larger screens */}
         <div className="hidden space-x-2 md:inline-block">
-          {isAuthenticated ? (
+          {navbar ? (
             <button
-              onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
+              // onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
               className="hover:bg-gradient-to-br focus:ring-4 focus:outline-none shadow-lg  shadow-red-500/50 dark:shadow-lg bg-gradient-to-r from-green-500 to-green-300 cursor-pointer font-medium rounded-lg text-sm px-5 py-2.5  text-black text-center mr-2 mb-2"
             >
               Log Out
             </button>
           ) : (
-            <button
-              onClick={() => loginWithRedirect()}
+            <Link to="/login"
+              // onClick={() => loginWithRedirect()}
               className="hover:bg-gradient-to-br focus:ring-4 focus:outline-none shadow-lg  shadow-red-500/50 dark:shadow-lg bg-gradient-to-r from-green-500 to-green-300 cursor-pointer font-medium rounded-lg text-sm px-5 py-2.5  text-black text-center mr-2 mb-2"
             >
               Log In
-            </button>
+            </Link>
           )}
         </div>
 

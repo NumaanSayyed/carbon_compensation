@@ -1,90 +1,82 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
+interface Login {
+  type: string;
+  route: string;
+}
+
 function Login() {
+  const [showLoginDropdown, setLoginDropdown] = useState(false);
+  const [, setSelectedLogin] = useState<Login | null>(null);
+
+  const LoginOption: Login[] = [
+    {
+      type: "Login As Student",
+      route:"/login/student"
+    },
+    {
+      type: "Login As Service Provider",
+      route: "/login/service"
+
+    },
+    {
+      type: "Login As College",
+      route: "/login/college"
+
+    }
+  ];
+
+  const handleSelectLogin = (login: Login) => {
+    setSelectedLogin(login);
+    setLoginDropdown(false);
+  };
+
   return (
-    <>
+    <div className="flex justify-center items-center h-screen">
+      <div className="relative">
+        <button
+          id="dropdownDefaultButton"
+          onClick={() => setLoginDropdown(!showLoginDropdown)}
+          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          type="button"
+        >
+          Select Login Option
+          <svg
+            className="w-2.5 h-2.5 ms-3"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 10 6"
+          >
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="m1 1 4 4 4-4"
+            />
+          </svg>
+        </button>
 
-      <div className="flex items-center justify-center p-12">
-        <div className="mx-auto w-full max-w-[550px] bg-white">
-          <h1 className="sm:text-4xl text-xl font-medium title-font mb-4 text-gray-900">Create An Account </h1>
-          <form>
-            <div className="mb-5">
-              <label htmlFor="name" className="mb-3 block text-base font-medium text-[#07074D]">
-                Full Name
-              </label>
-              <input type="text" name="name" id="name" placeholder="Full Name" className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
-            </div>
+        {/* Login Dropdown Menu */}
+        {showLoginDropdown && (
+          <div className="absolute top-full mt-1 w-full bg-white rounded-md shadow-lg z-10">
+            <ul className="py-1">
+              {LoginOption.map((opt, index) => (
+                <li key={index} className="cursor-pointer px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white" onClick={() => handleSelectLogin(opt)}>
+                 <Link to={opt.route}>
+                    {opt.type}
 
-            <div className="mb-5">
-              <label htmlFor="email" className="mb-3 block text-base font-medium text-[#07074D]">
-                Username
-              </label>
-              <input type="email" name="email" id="email" placeholder="Enter your email" className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
-            </div>
-            <div className="mb-5">
-              <label htmlFor="phone" className="mb-3 block text-base font-medium text-[#07074D]">
-                Phone Number
-              </label>
-              <input type="text" name="phone" id="phone" placeholder="Enter your phone number" className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
-            </div>
-            <div className="mb-5 pt-3">
-              <label className="mb-5 block text-base font-semibold text-[#07074D] sm:text-xl">
-                Password
-              </label>
-              <div className="-mx-3 flex flex-wrap">
-                <div className="w-full px-3 sm:w-1/2">
-                  <div className="mb-5">
-                    <input type="text" name="password" id="password" placeholder="Password" className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
-                  </div>
-                </div>
-                <div className="w-full px-3 sm:w-1/2">
-                  <div className="mb-5">
-                    <input type="text" name="cpassword" id="cpassword" placeholder="Confirm Password" className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
-                  </div>
-                </div>
+                 </Link>
 
-
-              </div>
-            </div>
-
-            <div className="-mx-3 flex flex-wrap">
-              <div className="w-full px-3 sm:w-1/2">
-                <div className="mb-5">
-                  <label htmlFor="date" className="mb-3 block text-base font-medium text-[#07074D]">
-                    DOB
-                  </label>
-                  <input type="date" name="date" id="date" className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
-                </div>
-              </div>
-
-              <div>
-
-
-              </div>
-
-
-            </div>
-            <div className="mb-5">
-              <label htmlFor="name" className="mb-3 block text-base font-medium text-[#07074D]">
-                College (Optional)
-              </label>
-              <input type="text" name="name" id="name" placeholder="Your College Name" className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
-            </div>
-            
-            <div>
-              <button className="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
-                Register An Account
-              </button>
-            </div>
-            <p className="mt-10 text-center text-sm text-gray-500">
-              Already have an account?    <Link to="/register" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"> Login</Link>
-            </p>
-          </form>
-        </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
-
-
-    </>
+    </div>
   );
 }
 

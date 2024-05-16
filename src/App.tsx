@@ -5,8 +5,10 @@ import Programs from "./components/Programs"
 import SelectedProgram from "./components/SelectedProgram"
 import Login from "./Authentication/Login"
 import Registration from "./Authentication/Registration";
+import ServiceProviderLogin from "./Authentication/ServiceProviderLogin";
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import StudLogin from "./Authentication/StudLogin";
 
 function App() {
     return(
@@ -20,6 +22,9 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/programs" element={<Programs />} />
             <Route path="/selected" element={<SelectedProgram />} />
+            <Route path="/login/student" element={<StudLogin />} />
+            <Route path="/login/service" element={<ServiceProviderLogin />} />
+            
             
           </Routes>
       <Footer />
