@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+// import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
+import forest from '../assets/forest.jpg';
+>>>>>>> 85d39d8aaf2344a8a7d85b1caf115f966b0ebc5d
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
