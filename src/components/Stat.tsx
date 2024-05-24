@@ -34,7 +34,7 @@ function Stat() {
     },
     {
       icon: top_college,
-      num: 200,
+      num: 1000,
       name: "Rizvi College",
       value: "Top Most College"
     },

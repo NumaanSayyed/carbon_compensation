@@ -1,7 +1,5 @@
-// import { Link } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import forest from '../assets/forest.jpg';
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 interface Program {
   prog: string;
@@ -11,6 +9,10 @@ interface NGO {
 }
 
 function SelectedProgram() {
+  const location = useLocation();
+  const { imageData } = location.state || {};
+
+
   const [showNGODropdown, setShowNGODropdown] = useState(false);
   const [showProgDropdown, setShowProgDropdown] = useState(false);
   const [selectedNGO, setSelectedNGO] = useState<NGO | null>(null);
@@ -104,14 +106,26 @@ function SelectedProgram() {
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto">
           <div className="text-center mb-20">
-            <h1 className="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">Forestation: 1 Tree 1 Carbon Credit</h1>
-            <img className="h-32 w-32 rounded-full border-4 border-white mx-36 my-20 float-left" src={forest} alt="Forest Image" />
-
+           
+            {imageData ? (
+              <div>
+                <h1 className="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">{imageData.text}</h1>
+                <img
+                  className="h-40 w-40 rounded-full object-cover transition-all duration-300 hover:scale-110 object-center mb-6"
+                  src={imageData.img}
+                  alt={imageData.alt}
+                />
+                {/* <h2 className="text-lg text-gray-900 font-medium title-font mb-4">{imageData.type}</h2>
+                <p className="leading-relaxed text-base">{imageData.desc}</p> */}
+              </div>
+            ) : (
+              <p>No image data available</p>
+            )}
             <div className="p-2 sm:w-1/2 w-full relative">
               <div className="relative">
                 {/* NGO Dropdown */}
                 <div className="bg-gray-100 rounded m-16 flex p-4 h-full   items-center cursor-pointer" onClick={() => setShowNGODropdown(!showNGODropdown)}>
-                    <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} className="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+                    <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} className="text-blue-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
                       <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
                       <path d="M22 4L12 14.01l-3-3" />
                     </svg>
@@ -131,7 +145,7 @@ function SelectedProgram() {
 
                 {/* Program Dropdown */}
                 <div className="bg-gray-100 rounded m-16 flex p-4 h-full items-center cursor-pointer" onClick={() => setShowProgDropdown(!showProgDropdown)}>
-                  <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} className="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+                  <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} className="text-blue-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
                     <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
                     <path d="M22 4L12 14.01l-3-3" />
                   </svg>

@@ -64,7 +64,7 @@ function Login() {
           <div className="absolute top-full mt-1 w-full bg-white rounded-md shadow-lg z-10">
             <ul className="py-1">
               {LoginOption.map((opt, index) => (
-                <li key={index} className="cursor-pointer px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white" onClick={() => handleSelectLogin(opt)}>
+                <li key={index} className="cursor-pointer px-4 py-2 text-gray-800 hover:bg-blue-500 hover:text-white" onClick={() => handleSelectLogin(opt)}>
                  <Link to={opt.route}>
                     {opt.type}
 

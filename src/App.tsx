@@ -6,6 +6,7 @@ import SelectedProgram from "./components/SelectedProgram"
 import Login from "./Authentication/Login"
 import Registration from "./Authentication/Registration";
 import ServiceProviderLogin from "./Authentication/ServiceProviderLogin";
+import CollegeLogin from "./Authentication/CollegeLogin";
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import StudLogin from "./Authentication/StudLogin";
@@ -24,6 +25,7 @@ function App() {
             <Route path="/selected" element={<SelectedProgram />} />
             <Route path="/login/student" element={<StudLogin />} />
             <Route path="/login/service" element={<ServiceProviderLogin />} />
+            <Route path="/login/college" element={<CollegeLogin />} />
             
             
           </Routes>

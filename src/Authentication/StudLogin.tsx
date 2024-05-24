@@ -79,7 +79,18 @@ function StudLogin() {
               </label>
               <input type="text" name="name" id="name" placeholder="Your College Name" className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
             </div>
-
+            <div className="mb-5">
+              <label htmlFor="address" className="mb-3 block text-base font-medium text-[#07074D]">
+                Address
+              </label>
+              <textarea
+                id="address"
+                name="address"
+                placeholder="Enter your address"
+                className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                required
+              ></textarea>
+            </div>
             <div>
               <button className="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
                 Register An Account

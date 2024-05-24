@@ -14,7 +14,8 @@ export default function Header() {
     {
       name: "Program",
       route: "/programs"
-    }
+    },
+    
    
   ];
 
@@ -24,8 +25,8 @@ export default function Header() {
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
             <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-              <img src={earth} className="h-16" alt="Flowbite Logo" />
-              {/* <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">process.env.pname</span> */}
+              <img src={earth} className="h-16" alt="Zome Logo" />
+            
               
             </Link>
            
@@ -88,14 +89,14 @@ export default function Header() {
           {navbar ? (
             <button
              
-              className="hover:bg-gradient-to-br focus:ring-4 focus:outline-none shadow-lg  shadow-red-500/50 dark:shadow-lg bg-gradient-to-r from-green-500 to-green-300 cursor-pointer font-medium rounded-lg text-sm px-5 py-2.5  text-black text-center mr-2 mb-2"
+              className="hover:bg-gradient-to-br focus:ring-4 focus:outline-none shadow-lg  shadow-red-500/50 dark:shadow-lg bg-gradient-to-r from-purple-500 to-purple-300 cursor-pointer font-medium rounded-lg text-sm px-5 py-2.5  text-black text-center mr-2 mb-2"
             >
               Log Out
             </button>
           ) : (
             <button
               
-              className="hover:bg-gradient-to-br focus:ring-4 focus:outline-none shadow-lg  shadow-red-500/50 dark:shadow-lg bg-gradient-to-r from-green-500 to-green-300 cursor-pointer font-medium rounded-lg text-sm px-5 py-2.5  text-black text-center mr-2 mb-2"
+              className="hover:bg-gradient-to-br focus:ring-4 focus:outline-none shadow-lg  shadow-red-500/50 dark:shadow-lg bg-gradient-to-r from-black to-white cursor-pointer font-medium rounded-lg text-sm px-5 py-2.5  text-black text-center mr-2 mb-2"
             >
               Log In
             </button>
@@ -114,7 +115,7 @@ export default function Header() {
           ) : (
             <Link to="/login"
               // onClick={() => loginWithRedirect()}
-              className="hover:bg-gradient-to-br focus:ring-4 focus:outline-none shadow-lg  shadow-red-500/50 dark:shadow-lg bg-gradient-to-r from-green-500 to-green-300 cursor-pointer font-medium rounded-lg text-sm px-5 py-2.5  text-black text-center mr-2 mb-2"
+                className="hover:bg-gradient-to-br focus:ring-4 focus:outline-none shadow-lg  shadow-red-500/50 dark:shadow-lg bg-gradient-to-r from-green-500 to-green-300 cursor-pointer font-medium rounded-lg text-sm px-5 py-2.5  text-black text-center mr-2 mb-2"
             >
               Log In
             </Link>
