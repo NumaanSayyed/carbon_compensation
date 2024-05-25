@@ -1,7 +1,4 @@
-// import { Link } from 'react-router-dom';
-//import { Link } from 'react-router-dom';
-// import forest from '../assets/forest.jpg';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 interface Program {
@@ -15,6 +12,10 @@ function SelectedProgram() {
   const location = useLocation();
   const { imageData } = location.state || {};
 
+  useEffect(() => {
+    // Scroll to the top of the page when the component mounts
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   const [showNGODropdown, setShowNGODropdown] = useState(false);
   const [showProgDropdown, setShowProgDropdown] = useState(false);
@@ -54,6 +55,7 @@ function SelectedProgram() {
     setSelectedProg(program);
     setShowProgDropdown(false);
   };
+
   const renderNGOInfo = () => {
     if (selectedNGO) {
       return (
@@ -80,7 +82,6 @@ function SelectedProgram() {
                       </tr>
                     </thead>
                     <tbody>
-                      {/* You can populate this table with data related to the selected NGO */}
                       <tr className="border-b dark:border-gray-700">
                         <th scope="row" className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap ">{selectedNGO.name}</th>
                         <td className="px-4 py-3 text-gray-900">1988</td>
@@ -90,7 +91,6 @@ function SelectedProgram() {
                         <td className="px-4 py-3 text-gray-900 flex items-center justify-end">
                         </td>
                       </tr>
-                      {/* Add more rows for additional information */}
                     </tbody>
                   </table>
                 </div>
@@ -109,7 +109,6 @@ function SelectedProgram() {
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto">
           <div className="text-center mb-20">
-           
             {imageData ? (
               <div>
                 <h1 className="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">{imageData.text}</h1>
@@ -118,24 +117,20 @@ function SelectedProgram() {
                   src={imageData.img}
                   alt={imageData.alt}
                 />
-                {/* <h2 className="text-lg text-gray-900 font-medium title-font mb-4">{imageData.type}</h2>
-                <p className="leading-relaxed text-base">{imageData.desc}</p> */}
               </div>
             ) : (
               <p>No image data available</p>
             )}
             <div className="p-2 sm:w-1/2 w-full relative">
               <div className="relative">
-                {/* NGO Dropdown */}
                 <div className="bg-gray-100 rounded m-16 flex p-4 h-full   items-center cursor-pointer" onClick={() => setShowNGODropdown(!showNGODropdown)}>
-                    <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} className="text-blue-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
-                      <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
-                      <path d="M22 4L12 14.01l-3-3" />
-                    </svg>
+                  <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} className="text-blue-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+                    <path d="M22 4L12 14.01l-3-3" />
+                  </svg>
                   <span className="title-font font-medium">{selectedNGO ? selectedNGO.name : "Service Provider"}</span>
                 </div>
 
-                {/* NGO Dropdown Menu */}
                 {showNGODropdown && (
                   <div className="absolute top-0 mt-12 right-0 w-48 bg-white rounded-md shadow-lg z-10">
                     <ul className="py-1">
@@ -146,7 +141,6 @@ function SelectedProgram() {
                   </div>
                 )}
 
-                {/* Program Dropdown */}
                 <div className="bg-gray-100 rounded m-16 flex p-4 h-full items-center cursor-pointer" onClick={() => setShowProgDropdown(!showProgDropdown)}>
                   <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} className="text-blue-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
                     <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
@@ -155,7 +149,6 @@ function SelectedProgram() {
                   <span className="title-font font-medium">{selectedProg ? selectedProg.prog : "Select Program"}</span>
                 </div>
 
-                {/* Program Dropdown Menu */}
                 {showProgDropdown && (
                   <div className="absolute top-0 mt-12 right-0 w-48 bg-white rounded-md shadow-lg z-10">
                     <ul className="py-1">
@@ -167,15 +160,11 @@ function SelectedProgram() {
                 )}
               </div>
             </div>
-            <button  type="button" className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-gradient-to-r from-blue-300 to-blue-600 rounded-lg border  focus:z-10 focus:ring-4 ">Submit</button>
-
+            <button type="button" className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-gradient-to-r from-blue-300 to-blue-600 rounded-lg border  focus:z-10 focus:ring-4 ">Submit</button>
           </div>
           {renderNGOInfo()}
-
         </div>
       </section>
-
-      
     </>
   );
 }
