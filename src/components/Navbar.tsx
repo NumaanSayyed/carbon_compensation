@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-// import { useAuth0 } from "@auth0/auth0-react";
-import earth from '../assets/earth.png'
+import earth from '../assets/earth.png';
+
 export default function Header() {
   const [navbar, setNavbar] = useState(false);
-  // const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
   const items = [
     {
@@ -14,9 +13,7 @@ export default function Header() {
     {
       name: "Program",
       route: "/programs"
-    },
-    
-   
+    }
   ];
 
   return (
@@ -25,11 +22,9 @@ export default function Header() {
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
             <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-              <img src={earth} className="h-16" alt="Zome Logo" />
-            
-              
+              <img src={earth} className="h-16" alt="Logo" />
+
             </Link>
-           
             <div className="md:hidden relative">
               <button
                 className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
@@ -86,45 +81,37 @@ export default function Header() {
 
         {/* Conditionally render the login/logout button based on screen size */}
         <div className={`md:hidden ${navbar ? "block" : "hidden"}`}>
-          {navbar ? (
-            <button
-             
-              className="hover:bg-gradient-to-br focus:ring-4 focus:outline-none shadow-lg  shadow-red-500/50 dark:shadow-lg bg-gradient-to-r from-purple-500 to-purple-300 cursor-pointer font-medium rounded-lg text-sm px-5 py-2.5  text-black text-center mr-2 mb-2"
+            {/* <button
+                     className="hover:bg-gradient-to-br focus:ring-4 focus:outline-none shadow-lg  shadow-red-500/50 dark:shadow-lg bg-gradient-to-r from-purple-500 to-purple-300 cursor-pointer font-medium rounded-lg text-sm px-5 py-2.5  text-black text-center mr-2 mb-2"
             >
               Log Out
-            </button>
-          ) : (
+            </button> */}
             <button
-              
-              className="hover:bg-gradient-to-br focus:ring-4 focus:outline-none shadow-lg  shadow-red-500/50 dark:shadow-lg bg-gradient-to-r from-black to-white cursor-pointer font-medium rounded-lg text-sm px-5 py-2.5  text-black text-center mr-2 mb-2"
+              className="hover:bg-gradient-to-br focus:ring-4 focus:outline-none shadow-lg  shadow-red-500/50 dark:shadow-lg bg-gradient-to-r from-green-300 to-green-500 cursor-pointer font-medium rounded-lg text-sm px-5 py-2.5  text-black text-center mr-2 mb-2"
             >
               Log In
             </button>
-          )}
+        
         </div>
 
         {/* Render profile picture for larger screens */}
         <div className="hidden space-x-2 md:inline-block">
-          {navbar ? (
-            <button
-              // onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
-              className="hover:bg-gradient-to-br focus:ring-4 focus:outline-none shadow-lg  shadow-red-500/50 dark:shadow-lg bg-gradient-to-r from-green-500 to-green-300 cursor-pointer font-medium rounded-lg text-sm px-5 py-2.5  text-black text-center mr-2 mb-2"
+                  
+            {/* <button
+            className="hover:bg-gradient-to-br focus:ring-4 focus:outline-none shadow-lg  shadow-red-500/50 dark:shadow-lg bg-gradient-to-r from-green-500 to-green-300 cursor-pointer font-medium rounded-lg text-sm px-5 py-2.5  text-black text-center mr-2 mb-2"
             >
               Log Out
-            </button>
-          ) : (
+            </button> */}
+      
             <Link to="/login"
-              // onClick={() => loginWithRedirect()}
-                className="hover:bg-gradient-to-br focus:ring-4 focus:outline-none shadow-lg  shadow-red-500/50 dark:shadow-lg bg-gradient-to-r from-green-500 to-green-300 cursor-pointer font-medium rounded-lg text-sm px-5 py-2.5  text-black text-center mr-2 mb-2"
+              className="hover:bg-gradient-to-br focus:ring-4 focus:outline-none shadow-lg  shadow-red-500/50 dark:shadow-lg bg-gradient-to-r from-green-500 to-green-300 cursor-pointer font-medium rounded-lg text-sm px-5 py-2.5  text-black text-center mr-2 mb-2"
             >
               Log In
             </Link>
-          )}
+          
         </div>
 
       </div>
     </nav>
   );
 }
-
-
