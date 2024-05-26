@@ -70,10 +70,12 @@ export default function Header() {
               }`}
           >
             <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
-              {items.map((data) => (
-                <li className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 dark:text-color1 md:dark:hover:text-blue-900 dark:hover:bg-gray-700  md:dark:hover:bg-transparent font-bold transition hover:-translate-y-1 hover:scale-110" aria-current="page" key={data.route}>
-                  <Link to={data.route}>{data.name}</Link>
-                </li>
+              {items.map((data, index) => (
+                <Link to={data.route} key={index} className="block w-full">
+                  <li className="py-2 pl-3 pr-4 text-gray-900 rounded md:hover:bg-transparent md:border-0 md:p-0 dark:text-color1 md:dark:hover:text-blue-900 md:dark:hover:bg-transparent font-bold transition hover:-translate-y-1 hover:scale-110" aria-current="page">
+                    {data.name}
+                  </li>
+                </Link>
               ))}
             </ul>
           </div>
