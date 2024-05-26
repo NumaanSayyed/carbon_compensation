@@ -1,19 +1,19 @@
 import  { useState } from 'react';
-import carbon from '../assets/carbon_compensation.png';
+import person from '../assets/person.jpg';
 
 function Features() {
   const users = [
     {
-      stud_name: "numan sd",
-      feedback: "Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi pug VHS try-hard"
+      stud_name: "Numan ",
+      feedback: "Participating in this initiative has been a rewarding experience. The tangible impact of our efforts on the environment is truly motivating "
     },
     {
-      stud_name: "numan sd",
-      feedback: "Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi pug VHS try-hard"
+      stud_name: "Hamza",
+      feedback: "This program has significantly enhanced my understanding of carbon offsetting. It's empowering to contribute to such impactful environmental projects."
     },
     {
-      stud_name: "numan sd",
-      feedback: "Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi pug VHS try-hard"
+      stud_name: "Tushar",
+      feedback: "The carbon compensation program is a fantastic way to make a real difference. It's inspiring to see how collective actions can lead to substantial change"
     },
   ];
 
@@ -43,7 +43,7 @@ function Features() {
               {users.map((data, index) => (
                 <div key={index} className="p-4 md:w-1/3 text-center">
                   <div className="w-20 h-20 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5 flex-shrink-0">
-                    <img src={carbon} alt="" />
+                    <img src={person} alt="Person Photo" />
                   </div>
                   <div className="flex-grow">
                     <h2 className="text-gray-900 text-lg title-font font-medium mb-3">{data.stud_name}</h2>
@@ -60,7 +60,7 @@ function Features() {
                     <div key={index} className="w-full flex-shrink-0">
                       <div className="p-4 text-center">
                         <div className="w-20 h-20 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5 flex-shrink-0">
-                          <img src={carbon} alt="" />
+                          <img src={person} alt="" />
                         </div>
                         <div className="flex-grow">
                           <h2 className="text-gray-900 text-lg title-font font-medium mb-3">{data.stud_name}</h2>
@@ -71,7 +71,7 @@ function Features() {
                   ))}
                 </div>
               </div>
-              <button className="absolute top-1/2 transform -translate-y-1/2 left-0 text-black  border-0 py-2 px-4 focus:outline-none bg-gray-100 rounded-full" onClick={handlePrevTestimonial}>
+              <button className="absolute top-1/2 transform -translate-y-1/2 left-0 text-black  border-0 py-2 px-4 focus:outline-none bg-gray-50 rounded-full" onClick={handlePrevTestimonial}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="w-6 h-6"
@@ -88,7 +88,7 @@ function Features() {
                   </svg>
 
               </button>
-              <button className="absolute top-1/2 transform -translate-y-1/2 right-0 text-black  border-0 py-2 px-4 focus:outline-none bg-gray-100 rounded-full" onClick={handleNextTestimonial}>
+              <button className="absolute top-1/2 transform -translate-y-1/2 right-0 text-black  border-0 py-2 px-4 focus:outline-none bg-gray-50 rounded-full" onClick={handleNextTestimonial}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="w-6 h-6"

@@ -137,7 +137,7 @@ function Programs() {
                   >
                     Share Your Idea
                   </label>
-                  <textarea id="message" rows={4} className=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600  focus:border-primary-600 block w-full p-2.5 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Write your thoughts here..." defaultValue={""} />
+                  <textarea id="message" rows={4} className=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600  focus:border-primary-600 block w-full p-2.5 dark:border-gray-500 dark:placeholder-gray-400 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Write your thoughts here..." defaultValue={""} />
 
 
                 </div>

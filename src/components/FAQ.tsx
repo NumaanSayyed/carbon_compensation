@@ -3,19 +3,34 @@ import { useState } from 'react';
 function FAQ() {
     const FAQ1 = [
         {
-            question: "What do you mean by Figma assets?",
-            answer: "You will have access to download the full Figma project including all of the pages, the components, responsive pages, and also the icons, illustrations, and images included in the screens."
+            question: "What is Carbon Credit ?",
+            answer: "It's a credit which you get for each project you do by the service provider under which you doing that program,Initially you get -1000 points and as you contribute something for the enviornment it moves towards positive"
         },
         {
-            question: "What do you mean by Figma assets?",
-            answer: "You will have access to download the full Figma project including all of the pages, the components, responsive pages, and also the icons, illustrations, and images included in the screens."
+            question: "How do I track the impact of my contributions?",
+            answer: "You will get the carbon cre"
         },
+        {
+            question: "What are the benefits of carbon compensation?",
+            answer: "First of all you save the earth, and for the student who enrolled for the program will also get completion certificate of internship "
+        },
+       
+        
     ];
     const FAQ2 = [
+       
         {
-            question: "What does free updates include?",
-            answer: "The free updates that will be provided are based on the roadmap that we have laid out for this project. It is also possible that we will provide extra updates outside of the roadmap as well."
-        }
+            question: "Do I receive a certificate for my contributions?",
+            answer: "Yes, participants often receive certificates acknowledging that they have done contributed/perform activity which impacts to the enviornment."
+        },
+        {
+            question: "Can businesses also participate in carbon compensation?",
+            answer: "Our participant's are not only limited just with students, each person has responsibility to save the enviornment."
+        },
+        {
+            question: "What happens if I fails to deliver the promised offset?",
+            answer: "In such case you won't get the certificate "
+        },
     ];
 
     const [visibleFAQ, setVisibleFAQ] = useState<number | null>(null);
