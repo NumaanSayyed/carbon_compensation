@@ -4,7 +4,8 @@ import water from '../assets/water.jpg';
 import soil from '../assets/soil.jpg';
 import ewaste from '../assets/e-waste.png';
 import animal from '../assets/animal.jpg';
-import suggestion from '../assets/suggest.png'
+import suggestion from '../assets/suggest.png';
+import person from '../assets/person.jpg';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -17,7 +18,7 @@ function Programs() {
   };
 
 
-  const [modal,setModal] = useState(false)
+  const [modal, setModal] = useState(false);
   const prog = [
     {
       type: "Forest",
@@ -60,7 +61,21 @@ function Programs() {
     },
   ];
 
- 
+  // const prof = [
+  // {
+  //   num:-322,
+  //   value:"Current Credit "
+  // },
+  // {
+  //   num:10,
+  //   value:"Project Associated With "
+  // },
+  // {
+  //   num:3  ,
+  //   value:"Project Completion & Credits   "
+  // },
+  // ]
+
   return (
     <>
 
@@ -158,13 +173,57 @@ function Programs() {
       </div>
 
 
+      <section className="pt-16 bg-blueGray-50">
+        <div className="w-full lg:w-4/12 px-4 mx-auto">
+          <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-16">
+            <div className="px-6">
+              <div className="flex flex-wrap justify-center">
+                <div className="w-full px-4 flex justify-center">
+                  <div className="relative">
+                    <img
+                      src={person}
+                      className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
+                      alt="user profile"
+                    />
+                  </div>
+                </div>
+                <div className="w-full px-4 text-center ">
+                  <div className="flex justify-center py-4 lg:pt-4 pt-8">
+                    <div className="mr-4 p-3 text-center">
+                      <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
+                        -300
+                      </span>
+                      <span className="text-sm text-blueGray-400">Current Credit</span>
+                    </div>
+                    <div className="mr-4 p-3 text-center">
+                      <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
+                        10
+                      </span>
+                      <span className="text-sm text-blueGray-400">Projects Associated With</span>
+                    </div>
+                    <div className="lg:mr-4 p-3 text-center">
+                      <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
+                        4 , 700
+
+                      </span>
+                      <span className="text-sm text-blueGray-400">Completed Projects & Credit</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="text-center mt-12">
+                <h3 className="text-xl font-semibold leading-normal text-blueGray-700 mb-2">
+                  John 
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
 
 
 
-
-
- 
 
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto">
@@ -199,9 +258,9 @@ function Programs() {
               src={suggestion}
               alt="Forest Image"
               title="If you have any suggestion share with us"
-              onClick={()=> setModal(true)}
- />
-          
+              onClick={() => setModal(true)}
+            />
+
           </div>
         </div>
       </section>
