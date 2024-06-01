@@ -1,9 +1,15 @@
 import { Link } from 'react-router-dom';
 import earth from '../assets/earth.png'
+import Aos from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 function Footer() {
+  useEffect(() => {
+    Aos.init();
+  }, [])
   return (
     <>
-          <footer className="p-4 bg-white sm:p-6 ">
+      <footer className="p-4 bg-white sm:p-6 " data-aos="fade-left">
   <div className="mx-auto max-w-screen-xl">
     <div className="md:flex md:justify-between">
       <div className="mb-6 md:mb-0">
@@ -50,7 +56,7 @@ function Footer() {
     </div>
     <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
     <div className="sm:flex sm:items-center sm:justify-between">
-      <span className="text-sm text-gray-500 sm:text-center dark:text-black">© 2024 <a href="https://flowbite.com" className="hover:underline">process.env.pname™</a>. All Rights Reserved.
+      <span className="text-sm text-gray-500 sm:text-center dark:text-black">© 2024 <a href="#" className="hover:underline">Carbon Compensation™</a>. All Rights Reserved.
       </span>
       <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
         <a href="#" className="text-blue-500 hover:text-blue-900 dark:hover:text-blue">

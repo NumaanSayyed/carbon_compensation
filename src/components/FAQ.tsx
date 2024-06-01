@@ -1,6 +1,10 @@
-import { useState } from 'react';
-
+import { useEffect, useState } from 'react';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 function FAQ() {
+    useEffect(() => {
+        Aos.init();
+    }, [])
     const FAQ1 = [
         {
             question: "What is Carbon Credit ?",
@@ -40,7 +44,7 @@ function FAQ() {
     };
 
     return (
-        <section className="bg-white">
+        <section className="bg-white" data-aos="fade-left">
             <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
                 <h2 className="mb-8 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-text">Frequently asked questions</h2>
                 <div className="grid pt-8 text-left border-t border-gray-200 md:gap-16 dark:border-gray-700 md:grid-cols-2">

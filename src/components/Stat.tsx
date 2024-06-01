@@ -4,7 +4,15 @@ import service from '../SVG/service.svg';
 import top_individual from '../SVG/top_individual.svg';
 import carbon_credits from '../SVG/carboncredits.png';
 import top_college from '../SVG/top_college.svg';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
+
 function Stat() {
+  useEffect(() => {
+    Aos.init();
+  }, [])
+  
   const stats = [
     {
       icon: graduate,
@@ -42,7 +50,7 @@ function Stat() {
   ];
 
   return (
-    <section className="text-gray-600 body-font">
+    <section className="text-gray-600 body-font " data-aos="fade-right">
       <div className="container px-5 py-2 mx-auto">
         <div className="flex flex-col text-center w-full mb-20">
           <h1 className="sm:text-4xl text-xl font-medium title-font mb-4 text-gray-900">Carbon Compensation Statistic</h1>

@@ -1,7 +1,11 @@
-import  { useState } from 'react';
+import  { useEffect, useState } from 'react';
 import person from '../assets/person.jpg';
-
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 function Features() {
+  useEffect(()=>{
+    Aos.init();
+  },[])
   const users = [
     {
       stud_name: "Numan ",
@@ -29,7 +33,7 @@ function Features() {
 
   return (
     <>
-      <section className="text-text body-font">
+      <section className="text-text body-font" data-aos="fade-down">
         <div className="container px-5 py-24 mx-auto">
           <div className="text-center mb-20">
             <h1 className="sm:text-3xl text-2xl font-medium title-font text-text mb-4">What Our Enrolled Participants Say</h1>
