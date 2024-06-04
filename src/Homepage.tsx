@@ -8,7 +8,7 @@ import Feedback from "./components/Feedback"
 function Homepage() {
   return (
   <>
-  <HeroSection/>
+  <HeroSection />
       <Stat />
       <ShowCase />
       <Features />

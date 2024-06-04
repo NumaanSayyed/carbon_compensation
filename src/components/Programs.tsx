@@ -1,30 +1,34 @@
-// import carbon_credits from '../assets/carbon_credit.png';
+import  { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import 'aos/dist/aos.css';
+
 import forest from '../assets/forest.jpg';
 import water from '../assets/water.jpg';
 import soil from '../assets/soil.jpg';
 import ewaste from '../assets/e-waste.png';
 import animal from '../assets/animal.jpg';
 import suggestion from '../assets/suggest.png';
-import Aos from 'aos'
-import 'aos/dist/aos.css'
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 function Programs() {
-
-  useEffect(()=>{
-    Aos.init()
-  },[])
-
   const navigate = useNavigate();
-
+  const [modal, setModal] = useState(false);
 
   const handleClick = (data: { type: string; desc: string; img: string; alt: string; }) => {
     navigate('/selected', { state: { imageData: data } });
   };
 
+  useEffect(() => {
+    if (modal) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
+  }, [modal]);
 
-  const [modal, setModal] = useState(false);
+
   const prog = [
     {
       type: "Forest",
@@ -32,7 +36,6 @@ function Programs() {
       img: forest,
       alt: "Forest Image",
       text: "Forestation 1 Tree 1 Carbon Credit"
-
     },
     {
       type: "Water",
@@ -40,7 +43,6 @@ function Programs() {
       img: water,
       alt: "Water Image",
       text: "Clean Water 1 Well 1000 Liters"
-
     },
     {
       type: "Soil",
@@ -48,7 +50,6 @@ function Programs() {
       img: soil,
       alt: "Soil Image",
       text: "Soil Restoration 1 Acre 1000 Nutrients"
-
     },
     {
       type: "E-Waste",
@@ -56,7 +57,6 @@ function Programs() {
       img: ewaste,
       alt: "E-Waste Image",
       text: "E- Waste Recycling 1 Device 1 Credit"
-
     },
     {
       type: "Animal",
@@ -67,34 +67,16 @@ function Programs() {
     },
   ];
 
-  // const prof = [
-  // {
-  //   num:-322,
-  //   value:"Current Credit "
-  // },
-  // {
-  //   num:10,
-  //   value:"Project Associated With "
-  // },
-  // {
-  //   num:3  ,
-  //   value:"Project Completion & Credits   "
-  // },
-  // ]
-
   return (
     <>
-
+      {modal && <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-40" onClick={() => setModal(false)}></div>}
       <div
         id="crud-modal"
-        // tabIndex="-1"
         aria-hidden="true"
-        className={`fixed top-0 left-0 flex justify-center items-center w-full h-full bg-black bg-opacity-50 ${modal ? '' : 'hidden'}`}
+        className={`fixed top-0 left-0 flex justify-center items-center w-full h-full z-50 ${modal ? '' : 'hidden'}`}
       >
         <div className="relative w-full max-w-md bg-transparent radius">
-          {/* Modal content */}
-          <div className="relative bg-transparent  rounded-lg shadow ">
-            {/* Modal header */}
+          <div className="relative bg-transparent rounded-lg shadow">
             <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                 Share Your Thoughts
@@ -126,8 +108,8 @@ function Programs() {
               <div className="grid gap-4 mb-4 grid-cols-2">
                 <div className="col-span-2">
                   <label
-                    htmlFor="name"
-                    className="block  text-sm font-medium text-gray-900 dark:text-white"
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Your Email
                   </label>
@@ -136,7 +118,7 @@ function Programs() {
                     name="email"
                     id="email"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-100 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500 mb-2"
-                    placeholder="Your Name Here..."
+                    placeholder="Your Email Here..."
                   />
                   <label
                     htmlFor="topic"
@@ -149,74 +131,70 @@ function Programs() {
                     name="topic"
                     id="topic"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-100 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                    placeholder="Your Name Here..."
+                    placeholder="Topic Name Here..."
                   />
-
                   <label
-                    htmlFor="name"
+                    htmlFor="message"
                     className="block text-sm font-medium mt-2 text-gray-900 dark:text-white"
                   >
                     Share Your Idea
                   </label>
-                  <textarea id="message" rows={4} className=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600  focus:border-primary-600 block w-full p-2.5 dark:border-gray-500 dark:placeholder-gray-400 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Write your thoughts here..." defaultValue={""} />
-
-
+                  <textarea
+                    id="message"
+                    rows={4}
+                    className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:border-gray-500 dark:placeholder-gray-400 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    placeholder="Write your thoughts here..."
+                  />
                 </div>
               </div>
               <button
                 type="submit"
                 className="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
-
                 Share Idea
               </button>
-            </form>
-            <form className="p-4 md:p-5">
-              {/* Form inputs */}
             </form>
           </div>
         </div>
       </div>
 
-
-    
-      <section className="pt-16 bg-blueGray-50" >
+      <section className="pt-16 bg-blueGray-50">
         <div className="w-full lg:w-4/12 px-4 mx-auto">
-          <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6  rounded-lg mt-16">
+          <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 rounded-lg mt-16">
             <div className="px-6">
               <div className="flex flex-wrap justify-center">
                 <div className="w-full flex justify-center px-4">
-                  <div className="relative">
+                  <div className="relative hover:scale-125 cursor-pointer">
                     <img
-                      alt="Profile"
+                      data-aos="fade-down"
+                      alt="Medal"
                       src="https://img.freepik.com/premium-vector/gold-medal-badge-vector-best-award_548471-256.jpg"
-                      className="shadow-xl  rounded-full h-32 w-32 lg:h-40 lg:w-40 -mt-16 border-none"
+                      className="shadow-xl rounded-full h-32 w-32 lg:h-40 lg:w-40 -mt-16 border-none "
                     />
                   </div>
                 </div>
                 <div className="w-full text-center mt-20 px-4">
                   <div className="flex justify-center py-4 lg:pt-4 pt-8">
-                    <div className="mr-4 p-3 text-center">
+                    <div className="mr-4 p-3 text-center" data-aos="fade-up">
                       <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                        -500
+                        50
                       </span>
                       <span className="text-sm text-blueGray-400">Current Credit</span>
                     </div>
-                    <div className="mr-4 p-3 text-center">
+                    <div className="mr-4 p-3 text-center" data-aos="fade-down">
                       <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                        10
+                        20
                       </span>
                       <span className="text-sm text-blueGray-400">Enrolled Programs</span>
                     </div>
-                    <div className="p-3 text-center lg:mr-4">
+                    <div className="p-3 text-center lg:mr-4" data-aos="fade-left">
                       <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                        2
+                        13
                       </span>
                       <span className="text-sm text-blueGray-400">Completed Projects</span>
                     </div>
-                    
                   </div>
-                  <h3 className="text-xl font-semibold leading-normal text-blueGray-700 mb-2">
+                  <h3 className="text-xl font-semibold leading-normal text-blueGray-700 mb-2" data-aos="flip-right">
                     John Desouza
                   </h3>
                 </div>
@@ -226,10 +204,7 @@ function Programs() {
         </div>
       </section>
 
-
-
-
-      <section className="text-gray-600 body-font" >
+      <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap w-full mb-20">
             <div className="lg:w-1/2 w-full mb-6 lg:mb-0">
@@ -237,7 +212,7 @@ function Programs() {
               <div className="h-1 w-20 bg-black rounded" />
             </div>
           </div>
-          <div className="flex flex-wrap -m-4" >
+          <div className="flex flex-wrap -m-4">
             {prog.map((data, index) => (
               <div
                 key={index}
@@ -255,20 +230,17 @@ function Programs() {
                 </div>
               </div>
             ))}
-
             <img
               data-aos="fade-left"
-              className="h-20 w-20 sm:h-10 sm:w-10 md:h-10 md:w-10 lg:h-20 lg:w-20 transition-all duration-300 hover:scale-110 cursor-pointer border-4 border-white"
+              className="h-20 w-20 sm:h-10 sm:w-10 md:h-10 md:w-10 lg:h-20 lg:w-20 transition-all duration-300 hover:scale-110 cursor-pointer border-4 border-white "
               src={suggestion}
-              alt="Forest Image"
+              alt="Suggestion Image"
               title="If you have any suggestion share with us"
               onClick={() => setModal(true)}
             />
-
           </div>
         </div>
       </section>
-
     </>
   );
 }

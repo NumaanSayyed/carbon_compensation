@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-
+import 'aos/dist/aos.css'
 interface Program {
   prog: string;
 }
@@ -106,13 +106,14 @@ function SelectedProgram() {
 
   return (
     <>
-      <section className="text-gray-600 body-font">
+      <section className="text-gray-600 body-font" data-aos="fade-left">
         <div className="container px-5 py-24 mx-auto">
           <div className="text-center mb-20">
             {imageData ? (
               <div>
                 <h1 className="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">{imageData.text}</h1>
                 <img
+                data-aos="fade-down"
                   className="h-40 w-40 rounded-full object-cover transition-all duration-300 hover:scale-110 object-center mb-6"
                   src={imageData.img}
                   alt={imageData.alt}
@@ -121,9 +122,9 @@ function SelectedProgram() {
             ) : (
               <p>No image data available</p>
             )}
-            <div className="p-2 sm:w-1/2 w-full relative">
+            <div className="p-2 sm:w-1/2 w-full relative" >
               <div className="relative">
-                <div className="bg-gray-100 rounded m-16 flex p-4 h-full   items-center cursor-pointer" onClick={() => setShowNGODropdown(!showNGODropdown)}>
+                <div className="bg-gray-100 rounded m-16 flex p-4 h-full   items-center cursor-pointer"  onClick={() => setShowNGODropdown(!showNGODropdown)}>
                   <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} className="text-blue-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
                     <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
                     <path d="M22 4L12 14.01l-3-3" />
@@ -132,7 +133,7 @@ function SelectedProgram() {
                 </div>
 
                 {showNGODropdown && (
-                  <div className="absolute top-0 mt-12 right-0 w-48 bg-white rounded-md shadow-lg z-10">
+                  <div className="absolute top-0 mt-12 right-0 w-48 bg-white rounded-md shadow-lg z-10" >
                     <ul className="py-1">
                       {NGOList.map((ngo, index) => (
                         <li key={index} className="cursor-pointer px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white" onClick={() => handleSelectNGO(ngo)}>{ngo.name}</li>

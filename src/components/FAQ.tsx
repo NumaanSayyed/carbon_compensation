@@ -4,36 +4,37 @@ import 'aos/dist/aos.css';
 function FAQ() {
     useEffect(() => {
         Aos.init();
-    }, [])
+    }, []);
     const FAQ1 = [
         {
             question: "What is Carbon Credit ?",
-            answer: "It's a credit which you get for each project you do by the service provider under which you doing that program,Initially you get -1000 points and as you contribute something for the enviornment it moves towards positive"
+            answer: "You earn credits for each project completed through your chosen service provider. Initially, you start with -1000 points, and as you contribute to environmental efforts, your score progresses toward the positive."
         },
         {
             question: "How do I track the impact of my contributions?",
-            answer: "You will get the carbon cre"
+            answer: "You need to take care for e.g if you engage in planting, you must diligently nurture the trees to ensure they grow large and contribute to the greenery"
         },
         {
             question: "What are the benefits of carbon compensation?",
-            answer: "First of all you save the earth, and for the student who enrolled for the program will also get completion certificate of internship "
+            answer: "Firstly, you will contribute to saving the Earth, and students enrolled in the program will also receive a certificate of internship completion. "
         },
-       
-        
+
+
     ];
     const FAQ2 = [
-       
+
         {
             question: "Do I receive a certificate for my contributions?",
-            answer: "Yes, participants often receive certificates acknowledging that they have done contributed/perform activity which impacts to the enviornment."
+            answer: "If the participant achieves the committed goal,then only will receive certificates acknowledging that they have done contributed/perform activity which impacts to the enviornment."
         },
         {
+
             question: "Can businesses also participate in carbon compensation?",
-            answer: "Our participant's are not only limited just with students, each person has responsibility to save the enviornment."
+            answer: "Our participants are not limited to just students; every individual has a responsibility to contribute to environmental conservation."
         },
         {
-            question: "What happens if I fails to deliver the promised offset?",
-            answer: "In such case you won't get the certificate "
+            question: "What happens if I fail to deliver the promised offset?",
+            answer: "If a participant fails to achieve the committed goal, they will not receive carbon credits. Additionally, in the unfortunate event of a natural disaster causing the loss of the offset, whether through planting trees, water conservation, animal welfare, e-waste management, soil preservation, or any other carbon reduction program, the previously awarded carbon credits will be revoked."
         },
     ];
 
