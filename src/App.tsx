@@ -1,8 +1,9 @@
 import Homepage from "./Homepage"
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
-import Programs from "./components/Programs"
-import SelectedProgram from "./components/SelectedProgram"
+import Projects from "./components/Projects"
+import SelectedProject from "./components/SelectedProject"
+import Profile from "./components/Profile"
 import Login from "./Authentication/Login"
 import Registration from "./Authentication/Registration";
 import ServiceProviderLogin from "./Authentication/ServiceProviderLogin";
@@ -21,16 +22,17 @@ function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/register" element={<Registration />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/programs" element={<Programs />} />
-            <Route path="/selected" element={<SelectedProgram />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/selected" element={<SelectedProject />} />
             <Route path="/login/student" element={<StudLogin />} />
             <Route path="/login/service" element={<ServiceProviderLogin />} />
             <Route path="/login/college" element={<CollegeLogin />} />
             
             
           </Routes>
-      <Footer />
 
+      <Footer />
         </BrowserRouter>
       </>
     )

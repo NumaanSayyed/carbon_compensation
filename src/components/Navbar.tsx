@@ -11,8 +11,8 @@ export default function Header() {
       route: "/"
     },
     {
-      name: "Program",
-      route: "/programs"
+      name: "Projects",
+      route: "/projects"
     }
   ];
 
@@ -112,7 +112,7 @@ export default function Header() {
             </Link>
           
         </div>
-
+       
       </div>
     </nav>
   );

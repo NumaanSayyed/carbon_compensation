@@ -1,7 +1,6 @@
 import  { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import 'aos/dist/aos.css';
-
 import forest from '../assets/forest.jpg';
 import water from '../assets/water.jpg';
 import soil from '../assets/soil.jpg';
@@ -171,30 +170,39 @@ function Programs() {
                       src="https://img.freepik.com/premium-vector/gold-medal-badge-vector-best-award_548471-256.jpg"
                       className="shadow-xl rounded-full h-32 w-32 lg:h-40 lg:w-40 -mt-16 border-none "
                     />
+                    <h3 className="text-xl font-semibold leading-normal mt-2 text-center" data-aos="flip-right">
+                       
+                    </h3>
                   </div>
                 </div>
                 <div className="w-full text-center mt-20 px-4">
                   <div className="flex justify-center py-4 lg:pt-4 pt-8">
                     <div className="mr-4 p-3 text-center" data-aos="fade-up">
                       <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                        50
+                        200
                       </span>
                       <span className="text-sm text-blueGray-400">Current Credit</span>
                     </div>
                     <div className="mr-4 p-3 text-center" data-aos="fade-down">
                       <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
+                        1500
+                      </span>
+                      <span className="text-sm text-blueGray-400">Committed Credit </span>
+                    </div>
+                    <div className="p-3 text-center lg:mr-4" data-aos="fade-left">
+                      <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
                         20
                       </span>
-                      <span className="text-sm text-blueGray-400">Enrolled Programs</span>
+                      <span className="text-sm text-blueGray-400">Enrolled Projects</span>
                     </div>
                     <div className="p-3 text-center lg:mr-4" data-aos="fade-left">
                       <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
                         13
                       </span>
-                      <span className="text-sm text-blueGray-400">Completed Projects</span>
+                      <Link to="/profile" className="text-sm text-blueGray-400">Completed Projects</Link>
                     </div>
                   </div>
-                  <h3 className="text-xl font-semibold leading-normal text-blueGray-700 mb-2" data-aos="flip-right">
+                  <h3 className="text-xl font-semibold leading-normal  mb-2" data-aos="flip-right">
                     John Desouza
                   </h3>
                 </div>
@@ -229,6 +237,7 @@ function Programs() {
                   <p className="leading-relaxed text-base">{data.desc}</p>
                 </div>
               </div>
+              
             ))}
             <img
               data-aos="fade-left"
@@ -240,6 +249,7 @@ function Programs() {
             />
           </div>
         </div>
+        {/* <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">My Projects   </h1> */}
       </section>
     </>
   );
