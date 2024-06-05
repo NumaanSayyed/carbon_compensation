@@ -195,12 +195,12 @@ function Programs() {
                       </span>
                       <span className="text-sm text-blueGray-400">Enrolled Projects</span>
                     </div>
-                    <div className="p-3 text-center lg:mr-4" data-aos="fade-left">
+                    <Link to="/profile" className="p-3 text-center lg:mr-4" data-aos="fade-left">
                       <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
                         13
                       </span>
-                      <Link to="/profile" className="text-sm text-blueGray-400">Completed Projects</Link>
-                    </div>
+                      <span className="text-sm text-blueGray-400">Completed Projects</span>
+                    </Link>
                   </div>
                   <h3 className="text-xl font-semibold leading-normal  mb-2" data-aos="flip-right">
                     John Desouza
