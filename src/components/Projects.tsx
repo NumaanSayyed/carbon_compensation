@@ -1,4 +1,4 @@
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import 'aos/dist/aos.css';
 import forest from '../assets/forest.jpg';
@@ -157,7 +157,7 @@ function Programs() {
         </div>
       </div>
 
-      <section className="pt-16 bg-blueGray-50">
+      {/* <section className="pt-16 bg-blueGray-50">
         <div className="w-full lg:w-4/12 px-4 mx-auto">
           <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 rounded-lg mt-16">
             <div className="px-6">
@@ -171,7 +171,7 @@ function Programs() {
                       className="shadow-xl rounded-full h-32 w-32 lg:h-40 lg:w-40 -mt-16 border-none "
                     />
                     <h3 className="text-xl font-semibold leading-normal mt-2 text-center" data-aos="flip-right">
-                       
+                      Gold Crusader
                     </h3>
                   </div>
                 </div>
@@ -179,7 +179,7 @@ function Programs() {
                   <div className="flex justify-center py-4 lg:pt-4 pt-8">
                     <div className="mr-4 p-3 text-center" data-aos="fade-up">
                       <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                        200
+                        1000
                       </span>
                       <span className="text-sm text-blueGray-400">Current Credit</span>
                     </div>
@@ -210,7 +210,7 @@ function Programs() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto">
@@ -237,11 +237,11 @@ function Programs() {
                   <p className="leading-relaxed text-base">{data.desc}</p>
                 </div>
               </div>
-              
+
             ))}
             <img
               data-aos="fade-left"
-              className="h-20 w-20 sm:h-10 sm:w-10 md:h-10 md:w-10 lg:h-20 lg:w-20 transition-all duration-300 hover:scale-110 cursor-pointer border-4 border-white "
+              className="h-20 w-20 sm:h-10 sm:w-10 md:h-10 md:w-10 lg:h-20 lg:w-20 transition-all duration-300 hover:scale-110 cursor-pointer border-4 border-white  "
               src={suggestion}
               alt="Suggestion Image"
               title="If you have any suggestion share with us"

@@ -4,11 +4,12 @@ import Footer from "./components/Footer"
 import Projects from "./components/Projects"
 import SelectedProject from "./components/SelectedProject"
 import Profile from "./components/Profile"
+import MyProjects from "./components/MyProjects"
 import Login from "./Authentication/Login"
 import Registration from "./Authentication/Registration";
 import ServiceProviderLogin from "./Authentication/ServiceProviderLogin";
 import CollegeLogin from "./Authentication/CollegeLogin";
-
+import ServiceProviderDasboard from './ServiceProvider/ServiceProviderDashboard'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import StudLogin from "./Authentication/StudLogin";
 
@@ -25,6 +26,8 @@ function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/selected" element={<SelectedProject />} />
+            <Route path="/MyProjects" element={<MyProjects />} />
+            <Route path="/serviceprovider" element={<ServiceProviderDasboard />} />
             <Route path="/login/student" element={<StudLogin />} />
             <Route path="/login/service" element={<ServiceProviderLogin />} />
             <Route path="/login/college" element={<CollegeLogin />} />

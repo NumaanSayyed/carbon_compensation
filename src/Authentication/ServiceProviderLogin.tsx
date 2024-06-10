@@ -105,11 +105,11 @@ function ServiceProviderLogin() {
                         ></textarea>
                     </div>
 
-                    <div>
+                    <Link to="/serviceprovider" >
                         <button className="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
                             Register An Account
                         </button>
-                    </div>
+                    </Link>
 
                     <p className="mt-10 text-center text-sm text-gray-500">
                         Already have an account?{" "}

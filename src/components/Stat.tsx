@@ -50,7 +50,7 @@ function Stat() {
   ];
 
   return (
-    <section className="text-gray-600 body-font " data-aos="fade-right">
+    <section className="text-gray-600 body-font" data-aos="fade-right">
       <div className="container px-5 py-2 mx-auto">
         <div className="flex flex-col text-center w-full mb-20">
           <h1 className="sm:text-4xl text-xl font-medium title-font mb-4 text-gray-900">Carbon Compensation Statistic</h1>
@@ -58,7 +58,7 @@ function Stat() {
         </div>
         <div className="flex flex-wrap -m-4 text-center">
           {stats.map((data, index) => (
-            <div key={index} className="p-4 w-full sm:w-1/2 md:w-1/4">
+            <div key={index} className="p-4 w-1/2 sm:w-1/2 md:w-1/4">
               <div className="border-gray-200 px-4 py-6 rounded-lg">
                 <img src={data.icon} alt="Icon" className="w-16 h-16 inline-block hover:scale-105 cursor-pointer" />
                 <h2 className="title-font font-medium text-2xl text-gray-900">{data.name}</h2>
@@ -70,6 +70,7 @@ function Stat() {
         </div>
       </div>
     </section>
+
 
 
   );
