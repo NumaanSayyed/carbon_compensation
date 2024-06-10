@@ -82,44 +82,49 @@ export default function Header() {
                 </Link>
               ))}
             </ul>
+
+            {/* Add profile photo and dropdown in mobile view */}
+            <div className="relative mt-4 md:hidden">
+              <button onClick={toggleDropdown} className="flex items-center space-x-3">
+                <img className="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500" src={person} alt="User avatar" />
+              </button>
+
+              {dropdownOpen && (
+                <div className="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-lg z-10">
+                  <div className="px-4 py-2">
+                    <div>Jese Leos</div>
+                    <div className="text-md text-gray-500 dark:text-gray-400">Logged as Student</div>
+                  </div>
+                  <hr className="border-t border-gray-200" />
+                  <Link to="/profile" className="block px-4 py-2 text-gray-800 hover:bg-gray-100" onClick={() => setDropdownOpen(false)}>My Profile</Link>
+                  <Link to="/myprojects" className="block px-4 py-2 text-gray-800 hover:bg-gray-100" onClick={() => setDropdownOpen(false)}>My Projects</Link>
+                  <Link to="/login" className="block px-4 py-2 text-gray-800 hover:bg-gray-100" onClick={() => setDropdownOpen(false)}>Login</Link>
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
-        {/* Conditionally render the login/logout button based on screen size */}
-        <div className={`md:hidden ${navbar ? "block" : "hidden"}`}>
-          <Link to="/login"
-            className="hover:bg-gradient-to-br focus:ring-4 focus:outline-none shadow-lg  shadow-red-500/50 dark:shadow-lg bg-gradient-to-r from-green-300 to-green-500 cursor-pointer font-medium rounded-lg text-sm px-5 py-2.5  text-black text-center mr-2 mb-2"
-          >
-            Log In
-          </Link>
-        </div>
-
         {/* Render profile picture for larger screens */}
-        {/* <div className="hidden space-x-2 md:inline-block">
-          <Link to="/login"
-            className="hover:bg-gradient-to-br focus:ring-4 focus:outline-none shadow-lg  shadow-red-500/50 dark:shadow-lg bg-gradient-to-r from-green-500 to-green-300 cursor-pointer font-medium rounded-lg text-sm px-5 py-2.5  text-black text-center mr-2 mb-2"
-          >
-            Log In
-          </Link>
-        </div> */}
+        <div className="hidden space-x-2 md:inline-block">
+          <div className="relative">
+            <button onClick={toggleDropdown} className="flex items-center space-x-3">
+              <img className="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500" src={person} alt="User avatar" />
+            </button>
 
-        <div className="relative">
-          <button onClick={toggleDropdown} className="flex items-center space-x-3">
-            <img className="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500" src={person} alt="User avatar" />
-          </button>
-
-          {dropdownOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-lg z-10">
-              <div className="px-4 py-2">
-                <div>Jese Leos</div>
-                <div className="text-md text-gray-500 dark:text-gray-400">Logged as Student</div>
+            {dropdownOpen && (
+              <div className="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-lg z-10">
+                <div className="px-4 py-2">
+                  <div>Jese Leos</div>
+                  <div className="text-md text-gray-500 dark:text-gray-400">Logged as Student</div>
+                </div>
+                <hr className="border-t border-gray-200" />
+                <Link to="/profile" className="block px-4 py-2 text-gray-800 hover:bg-gray-100" onClick={() => setDropdownOpen(false)}>My Profile</Link>
+                <Link to="/myprojects" className="block px-4 py-2 text-gray-800 hover:bg-gray-100" onClick={() => setDropdownOpen(false)}>My Projects</Link>
+                <Link to="/login" className="block px-4 py-2 text-gray-800 hover:bg-gray-100" onClick={() => setDropdownOpen(false)}>Login</Link>
               </div>
-              <hr className="border-t border-gray-200" />
-              <Link to="/profile" className="block px-4 py-2 text-gray-800 hover:bg-gray-100" onClick={() => setDropdownOpen(false)}>My Profile</Link>
-              <Link to="/myprojects" className="block px-4 py-2 text-gray-800 hover:bg-gray-100" onClick={() => setDropdownOpen(false)}>My Projects</Link>
-              <Link to="/login" className="block px-4 py-2 text-gray-800 hover:bg-gray-100" onClick={() => setDropdownOpen(false)}>Login</Link>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
     </nav>
