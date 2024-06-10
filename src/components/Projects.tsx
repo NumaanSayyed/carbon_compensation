@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import 'aos/dist/aos.css';
 import forest from '../assets/forest.jpg';
 import water from '../assets/water.jpg';
