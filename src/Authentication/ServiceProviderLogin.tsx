@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 
 function ServiceProviderLogin() {
     return (
-        <div className="flex items-center justify-center p-12">
-            <div className="mx-auto w-full max-w-[550px] bg-white p-8 rounded-lg ">
-                <h1 className="sm:text-4xl text-xl font-medium title-font mb-4 text-gray-900">
-                    Create An Account 
+        <div className="flex items-center justify-center p-4 sm:p-12">
+            <div className="mx-auto w-full max-w-[550px] bg-white p-6 sm:p-8 rounded-lg ">
+                <h1 className="sm:text-4xl text-2xl font-medium title-font mb-4 text-gray-900">
+                    Create An Account
                 </h1>
                 <form>
                     <div className="mb-5">
@@ -17,7 +17,7 @@ function ServiceProviderLogin() {
                             name="orgname"
                             id="orgname"
                             placeholder="Organization Name"
-                            className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 sm:py-3 px-4 sm:px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                             required
                         />
                     </div>
@@ -30,8 +30,8 @@ function ServiceProviderLogin() {
                             type="text"
                             name="orgtype"
                             id="orgtype"
-                            placeholder="Organization Type(NGO, Company etc..)"
-                            className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            placeholder="Organization Type (NGO, Company etc..)"
+                            className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 sm:py-3 px-4 sm:px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                             required
                         />
                     </div>
@@ -45,7 +45,7 @@ function ServiceProviderLogin() {
                             name="email"
                             id="email"
                             placeholder="Enter your email"
-                            className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 sm:py-3 px-4 sm:px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                             required
                         />
                     </div>
@@ -59,7 +59,7 @@ function ServiceProviderLogin() {
                             name="password"
                             id="password"
                             placeholder="Password"
-                            className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 sm:py-3 px-4 sm:px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                             required
                         />
                     </div>
@@ -73,7 +73,7 @@ function ServiceProviderLogin() {
                             name="cpassword"
                             id="cpassword"
                             placeholder="Confirm Password"
-                            className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 sm:py-3 px-4 sm:px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                             required
                         />
                     </div>
@@ -87,7 +87,7 @@ function ServiceProviderLogin() {
                             name="phone"
                             id="phone"
                             placeholder="Enter your phone number"
-                            className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 sm:py-3 px-4 sm:px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                             required
                         />
                     </div>
@@ -100,7 +100,7 @@ function ServiceProviderLogin() {
                             id="address"
                             name="address"
                             placeholder="Enter your address"
-                            className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 sm:py-3 px-4 sm:px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                             required
                         ></textarea>
                     </div>
@@ -114,8 +114,8 @@ function ServiceProviderLogin() {
                     <p className="mt-10 text-center text-sm text-gray-500">
                         Already have an account?{" "}
                         <Link to="/register" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
-Sign up        
-                </Link>
+                            Sign up
+                        </Link>
                     </p>
                 </form>
             </div>

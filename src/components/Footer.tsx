@@ -13,7 +13,7 @@ function Footer() {
   <div className="mx-auto max-w-screen-xl">
     <div className="md:flex md:justify-between">
       <div className="mb-6 md:mb-0">
-        <a href="https://flowbite.com" className="flex items-center">
+        <a href="#" className="flex items-center">
                 <img src={earth} className="mr-3 h-10" alt="Carbon Compensation Logo" />
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-text">Carbon Compensation</span>
         </a>
@@ -26,7 +26,7 @@ function Footer() {
               <Link to="/" className="hover:underline">Home</Link>
             </li>
             <li>
-              <Link to="/programs" className="hover:underline">Program</Link>
+              <Link to="/projects" className="hover:underline">Projects</Link>
             </li>
           </ul>
         </div>
