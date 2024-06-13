@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 import { Bar, Doughnut, Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -26,9 +28,27 @@ ChartJS.register(
 );
 
 const Dashboard = () => {
+  const pdfREF = useRef<HTMLDivElement>(null);
 
+  const downloadPDF = () => {
+    const input = pdfREF.current;
+    if (!input) return; // Add a null check
 
-  // Sample data for charts
+    html2canvas(input, { scale: 2 }).then((canvas) => {
+      const imageData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('p', 'mm', 'a4', true);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+      const imgWidth = canvas.width / 2; // Adjust for scale
+      const imgHeight = canvas.height / 2; // Adjust for scale
+      const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+      const imgX = (pdfWidth - imgWidth * ratio) / 2;
+      const imgY = 30;
+      pdf.addImage(imageData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
+      pdf.save('project.pdf');
+    });
+  };
+
   const enrolledData = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
     datasets: [
@@ -69,18 +89,33 @@ const Dashboard = () => {
     ],
   };
 
-  const leaderboardData = {
-    labels: ['Org A', 'Org B', 'Org C', 'Org D'],
+  const creditsData = {
+    labels: ['Generated Credits', 'Committed Credits'],
     datasets: [
       {
-        label: 'Credits Generated',
-        data: [500, 400, 300, 200],
-        backgroundColor: [
-          'rgba(54, 162, 235, 0.6)',
-          'rgba(75, 192, 192, 0.6)',
-          'rgba(255, 206, 86, 0.6)',
-          'rgba(255, 99, 132, 0.6)',
-        ],
+        label: 'Forest',
+        data: [500, 450],
+        backgroundColor: 'rgba(54, 162, 235, 0.6)',
+      },
+      {
+        label: 'Water',
+        data: [400, 300],
+        backgroundColor: 'rgba(75, 192, 192, 0.6)',
+      },
+      {
+        label: 'Soil',
+        data: [300, 350],
+        backgroundColor: 'rgba(255, 206, 86, 0.6)',
+      },
+      {
+        label: 'EWaste',
+        data: [200, 400],
+        backgroundColor: 'rgba(255, 99, 132, 0.6)',
+      },
+      {
+        label: 'Animal',
+        data: [260, 450],
+        backgroundColor: 'rgba(153, 102, 255, 0.6)',
       },
     ],
   };
@@ -108,12 +143,17 @@ const Dashboard = () => {
   return (
     <div className="container mx-auto p-4">
       <div className="flex justify-end mb-4">
-      <div className="bg-white p-4 right-0">
-        <button className="bg-blue-500 text-white py-2 px-4 rounded">Download Project Report</button>
-      </div>
+        <div className="bg-white p-4 right-0">
+          <button
+            className="bg-blue-500 text-white py-2 px-4 rounded"
+            onClick={downloadPDF}
+          >
+            Download Project Report
+          </button>
+        </div>
       </div>
       <h1 className="text-2xl font-bold mb-4">Service Provider Dashboard</h1>
-      <div  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div id="dashboard-content" ref={pdfREF} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <div className="bg-white p-4 rounded-lg shadow">
           <h2 className="text-xl font-semibold">Enrolled Students</h2>
           <Bar data={enrolledData} />
@@ -123,40 +163,16 @@ const Dashboard = () => {
           <Doughnut data={projectStatusData} />
         </div>
         <div className="bg-white p-4 rounded-lg shadow">
-          <h2 className="text-xl font-semibold">Generated Credits</h2>
-          <p className="text-3xl font-bold">1500</p>
-        </div>
-        {/* <div className="bg-white p-4 rounded-lg shadow">
-          <h2 className="text-xl font-semibold">Projects Initiated</h2>
-          <p className="text-3xl font-bold">8</p>
-        </div> */}
-        {/* <div className="bg-white p-4 rounded-lg shadow">
-          <h2 className="text-xl font-semibold">Projects Completed</h2>
-          <p className="text-3xl font-bold">5</p>
-        </div> */}
-        {/* <div className="bg-white p-4 rounded-lg shadow">
-          <h2 className="text-xl font-semibold">Projects In Progress</h2>
-          <p className="text-3xl font-bold">7</p>
-        </div> */}
-        <div className="bg-white p-4 rounded-lg shadow">
-          <h2 className="text-xl font-semibold">Committed Credits</h2>
-          <p className="text-3xl font-bold">1200</p>
+          <h2 className="text-xl font-semibold">Generated & Committed Credits</h2>
+          <Bar data={creditsData} />
         </div>
         <div className="bg-white p-4 rounded-lg shadow">
           <h2 className="text-xl font-semibold">Carbon Footprint Reduced</h2>
           <Line data={carbonFootprintData} />
         </div>
-        <div className="bg-white p-4 rounded-lg shadow">
-          <h2 className="text-xl font-semibold">Leaderboard</h2>
-          <Bar data={leaderboardData} options={{ indexAxis: 'y' }} />
-        </div>
         {/* <div className="bg-white p-4 rounded-lg shadow">
-          <h2 className="text-xl font-semibold">Recent Activities</h2>
-          <ul>
-            <li><i className="fas fa-check-circle text-green-500"></i> Project A completed by Org B</li>
-            <li><i className="fas fa-arrow-up text-blue-500"></i> Org C generated 100 credits</li>
-            <li><i className="fas fa-play-circle text-yellow-500"></i> Project D initiated by Org A</li>
-          </ul>
+          <h2 className="text-xl font-semibold">Leaderboard</h2>
+          <Bar data={creditsData} options={{ indexAxis: 'y' }} />
         </div> */}
         <div className="bg-white p-4 rounded-lg shadow">
           <h2 className="text-xl font-semibold">Target Progress</h2>
@@ -164,17 +180,9 @@ const Dashboard = () => {
             <div style={progressStyle}>80%</div>
           </div>
         </div>
-      
-        {/* <div className="bg-white p-4 rounded-lg shadow">
-          <h2 className="text-xl font-semibold">Feedback and Ratings</h2>
-          <p className="text-sm">Collect feedback and ratings for completed projects.</p>
-          <button className="bg-green-500 text-white py-2 px-4 rounded">Submit Feedback</button>
-        </div> */}
       </div>
     </div>
   );
 };
 
 export default Dashboard;
-
-
