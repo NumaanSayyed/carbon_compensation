@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import  { useRef } from 'react';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { Bar, Doughnut, Line } from 'react-chartjs-2';
@@ -30,24 +30,24 @@ ChartJS.register(
 const Dashboard = () => {
   const pdfREF = useRef<HTMLDivElement>(null);
 
-  const downloadPDF = () => {
-    const input = pdfREF.current;
-    if (!input) return; // Add a null check
+    const downloadPDF = () => {
+      const input = pdfREF.current;
+      if (!input) return; 
 
-    html2canvas(input, { scale: 2 }).then((canvas) => {
-      const imageData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF('p', 'mm', 'a4', true);
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = pdf.internal.pageSize.getHeight();
-      const imgWidth = canvas.width / 2; // Adjust for scale
-      const imgHeight = canvas.height / 2; // Adjust for scale
-      const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
-      const imgX = (pdfWidth - imgWidth * ratio) / 2;
-      const imgY = 30;
-      pdf.addImage(imageData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
-      pdf.save('project.pdf');
-    });
-  };
+      html2canvas(input, { scale: 2 }).then((canvas) => {
+        const imageData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF('p', 'mm', 'a4', true);
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = pdf.internal.pageSize.getHeight();
+        const imgWidth = canvas.width / 2; // Adjust for scale
+        const imgHeight = canvas.height / 2; // Adjust for scale
+        const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+        const imgX = (pdfWidth - imgWidth * ratio) / 2;
+        const imgY = 30;
+        pdf.addImage(imageData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
+        pdf.save('project.pdf');
+      });
+    };
 
   const enrolledData = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
@@ -120,25 +120,25 @@ const Dashboard = () => {
     ],
   };
 
-  const progressBarStyle: React.CSSProperties = {
-    width: '80%',
-    height: '24px',
-    backgroundColor: '#e0e0e0',
-    borderRadius: '12px',
-    overflow: 'hidden',
-    position: 'relative',
-  };
+  // const progressBarStyle: React.CSSProperties = {
+  //   width: '80%',
+  //   height: '24px',
+  //   backgroundColor: '#e0e0e0',
+  //   borderRadius: '12px',
+  //   overflow: 'hidden',
+  //   position: 'relative',
+  // };
 
-  const progressStyle: React.CSSProperties = {
-    width: '80%',
-    height: '100%',
-    backgroundColor: '#6A64F1',
-    borderRadius: '12px',
-    textAlign: 'center',
-    lineHeight: '24px',
-    color: 'white',
-    fontWeight: 'bold',
-  };
+  // const progressStyle: React.CSSProperties = {
+  //   width: '80%',
+  //   height: '100%',
+  //   backgroundColor: '#6A64F1',
+  //   borderRadius: '12px',
+  //   textAlign: 'center',
+  //   lineHeight: '24px',
+  //   color: 'white',
+  //   fontWeight: 'bold',
+  // };
 
   return (
     <div className="container mx-auto p-4">
@@ -173,13 +173,14 @@ const Dashboard = () => {
         {/* <div className="bg-white p-4 rounded-lg shadow">
           <h2 className="text-xl font-semibold">Leaderboard</h2>
           <Bar data={creditsData} options={{ indexAxis: 'y' }} />
-        </div> */}
+        </div> 
         <div className="bg-white p-4 rounded-lg shadow">
           <h2 className="text-xl font-semibold">Target Progress</h2>
           <div style={progressBarStyle}>
             <div style={progressStyle}>80%</div>
           </div>
         </div>
+        */}
       </div>
     </div>
   );
